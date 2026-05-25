@@ -44,18 +44,20 @@
 :root {
   --background: #ffffe3; /* Soft Sand */
   --foreground: #29565c; /* Retro Black */
-  --emerald: #d86e27;
+  --orange: #d86e27;
   --lineheaderfooter: #c8dce9;
 }
 
-@theme inline {
+@theme {
   --color-retro-sand: var(--background);
   --color-retro-black: var(--foreground);
-  --color-retro-emerald: var(--emerald);
+  --color-retro-orange: var(--orange);
   --font-mono:
     "Cascadia Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  --font-lacentralita: var(--font-lacentralita);
+
+  --font-lacentralita: "La Centralita", "la-centralita", sans-serif;
+
   --color-retro-terracotta: #cc5500;
 }
 
@@ -114,4 +116,40 @@ body {
   background-color: var(--background);
   margin: 0;
   position: relative;
+}
+
+@keyframes cleanBounce {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+  85% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.clean-bounce-title {
+  animation: cleanBounce 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+}
+
+@utility section-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 900; /* font-black */
+  font-style: italic; /* italic */
+  text-transform: uppercase; /* uppercase */
+  letter-spacing: -0.05em; /* tracking-tighter */
+  border-bottom: 4px solid var(--orange); /* border-b-4 border-retro-orange */
+  padding-bottom: 0.25rem; /* pb-1 */
+  display: inline-block; /* inline-block */
+  align-self: flex-start; /* self-start */
 }
