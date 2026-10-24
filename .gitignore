@@ -43,3 +43,4 @@ next-env.d.ts
 # font 
 app/Disko.ttf
 app/LaCentralita.otf
+.vstags
