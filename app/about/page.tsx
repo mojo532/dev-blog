@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start px-4 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start px-4 my-8">
         {/* profil card */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
@@ -41,15 +41,23 @@ export default function AboutPage() {
           {/* about me */}
           <section>
             <h3 className="section-title">About me</h3>
-            <p className="text-lg font-bold leading-relaxed text-retro-black">
-              Hi, I’m <span className="text-retro-orange">Kyungmin Kim.</span> I
-              write code to make the digital world a more meaningful and
-              enjoyable space. Right now, I'm studying Computer
-              Science(Informatik) at the University of Rostock in Germany.
-              Before pivoting to tech, I was a literature major and worked as a
-              marketer in the publishing industry. I’m still deeply in love with
-              art, avidly collecting vinyl, and sharing my space with a cat
-              named <span className="italic">Mojo</span>.
+            <p className="text-base font-normal leading-relaxed text-retro-black">
+              Hi, I’m <span className="text-retro-orange">Kyungmin Kim. </span>{" "}
+              A CS student and aspiring full-stack developer bridging
+              storytelling and software.
+              <br />
+              Right now, I'm studying Computer Science(B.Sc. Informatik) at the
+              University of Rostock in Germany. I am a aspiring full-stack
+              developer who loves building things from scratch.
+              <br />
+              Coming from a background in literature and publishing, I naturally
+              care about clear structure, good communication, and thoughtful
+              design. I enjoy working across the stack. From wiring up databases
+              and server logic to crafting clean, interactive web interfaces.
+              <br />
+              My goal is to build purposeful software, learn continuously
+              through hands-on projects, and make technology approachable and
+              fun.
             </p>
           </section>
 
@@ -60,36 +68,54 @@ export default function AboutPage() {
               {/* Frontend */}
               <li className={styles.interestCard}>
                 <div className={styles.interestTitle}>
-                  <span>✦</span> Frontend Engineering
+                  <span>
+                    <span className="grayscale opacity-80 inline-block">
+                      🖥️
+                    </span>
+                  </span>{" "}
+                  Frontend Engineering
                 </div>
-                <div className={styles.interestStack}>
-                  Next.js, React, JavaScript
-                </div>
+                <div className={styles.interestStack}>React, JavaScript</div>
               </li>
 
               {/* Backend */}
               <li className={styles.interestCard}>
                 <div className={styles.interestTitle}>
-                  <span>✦</span> Backend Engineering
+                  <span>
+                    <span className="grayscale opacity-80 inline-block">
+                      🖥️
+                    </span>
+                  </span>{" "}
+                  Backend Engineering
                 </div>
-                <div className={styles.interestStack}>Java, Python, C</div>
+                <div className={styles.interestStack}>Java, Python, C, SQL</div>
               </li>
 
               {/* Cloud */}
               <li className={styles.interestCard}>
                 <div className={styles.interestTitle}>
-                  <span>✦</span> Cloud Engineering
+                  <span>
+                    <span className="grayscale opacity-80 inline-block">
+                      🌐
+                    </span>
+                  </span>{" "}
+                  Cloud Engineering
                 </div>
-                <div className={styles.interestStack}>GCP</div>
+                <div className={styles.interestStack}>GCP, Kubernetes</div>
               </li>
 
               {/* Art & Lifestyle */}
               <li className={styles.interestCard}>
                 <div className={styles.interestTitle}>
-                  <span>✦</span> Art & Lifestyle
+                  <span>
+                    <span className="grayscale opacity-80 inline-block">
+                      🎵
+                    </span>
+                  </span>{" "}
+                  Art & Lifestyle
                 </div>
                 <div className={styles.interestStack}>
-                  Pixel Art, Literature, Vinyl
+                  Pixel Art, Literature, Collecting Vinyls
                 </div>
               </li>
             </ul>
@@ -220,7 +246,7 @@ export default function AboutPage() {
           <section>
             <h3 className="section-title">Contact</h3>
             <div className={styles.contactRow}>
-              <span className={styles.contactLabel}>📧 EMAIL</span>
+              <span className={styles.contactLabel}>EMAIL</span>
               <h4 className={styles.contactValue}>rudals5320@gmail.com</h4>
             </div>
           </section>

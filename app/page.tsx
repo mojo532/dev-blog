@@ -6,7 +6,7 @@ export default function Home() {
     <div className={styles.container}>
       <section className={styles.heroSection}>
         <h1
-          className={`${styles.mainTitle} font-lacentralita clean-bounce-title`}
+          className={`${styles.mainTitle} font-consolamono !text-[170px] md:!text-[170px] font-bold [-webkit-text-stroke:10px_white] [paint-order:stroke_fill] clean-bounce-title`}
         >
           Kyungmin
         </h1>

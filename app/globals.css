@@ -42,7 +42,7 @@
 }
 
 :root {
-  --background: #ffffe3; /* Soft Sand */
+  --background: #f7f8f9;
   --foreground: #29565c; /* Retro Black */
   --orange: #d86e27;
   --lineheaderfooter: #c8dce9;
@@ -57,6 +57,8 @@
     "Liberation Mono", "Courier New", monospace;
 
   --font-lacentralita: "La Centralita", "la-centralita", sans-serif;
+
+  --font-consolamono: var(--font-consolamono), monospace;
 
   --color-retro-terracotta: #cc5500;
 }
@@ -77,7 +79,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: #b9d9ee;
+  background-color: #e0e8f3;
   border-radius: 9999px;
   transform: scale(0);
   transition: transform 0.3s ease-out;
@@ -91,7 +93,8 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Cascadia Mono", monospace;
+  font-family: var(--font-sans), "Varta", sans-serif;
+  font-weight: 300 !important;
   position: relative;
   min-height: 100vh;
   margin: 0;
@@ -143,13 +146,17 @@ body {
 }
 
 @utility section-title {
-  font-size: 1.5rem; /* text-2xl */
-  font-weight: 900; /* font-black */
-  font-style: italic; /* italic */
-  text-transform: uppercase; /* uppercase */
-  letter-spacing: -0.05em; /* tracking-tighter */
-  border-bottom: 4px solid var(--orange); /* border-b-4 border-retro-orange */
-  padding-bottom: 0.25rem; /* pb-1 */
-  display: inline-block; /* inline-block */
-  align-self: flex-start; /* self-start */
+  font-size: 1.5rem;
+  font-weight: 900; /* black */
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  border-bottom: 4px solid var(--orange);
+  padding-bottom: 0.25rem;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.font-consolamono {
+  font-family: var(--font-consolamono), monospace !important;
 }

@@ -1,10 +1,30 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
-const laCentralita = localFont({
-  src: "./LaCentralita.otf",
-  variable: "--font-lacentralita",
+const consolaMono = localFont({
+  src: [
+    {
+      path: "./ConsolaMono-Book.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./ConsolaMono-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-consolamono",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,32 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={`antialiased relative min-h-screen text-retro-black ${laCentralita.variable}`}
+        className={`antialiased relative min-h-screen text-retro-black ${consolaMono.variable} ${interTight.variable}`}
       >
         <div className="sand-texture" />
         <div className="relative z-10 max-w-6xl mx-auto min-h-screen p-6 md:p-12 flex flex-col justify-between">
           {/* header */}
           <header className="flex justify-center items-center mb-18 pb-6">
-            <nav className="flex justify-center gap-11">
-              <a href="/" className="nav-bubble">
-                HOME
-              </a>
-              <a href="/about" className="nav-bubble">
-                ABOUT
-              </a>
-              <a href="/projects" className="nav-bubble">
-                PROJECTS
-              </a>
-              <a href="/books" className="nav-bubble">
-                BOOKS
-              </a>
-              <a href="/vinyls" className="nav-bubble">
-                VINYLS
-              </a>
-              <a href="/logs" className="nav-bubble">
-                LOGS
-              </a>
-            </nav>
+            <Navbar />
           </header>
 
           {/* body */}
@@ -68,7 +69,6 @@ export default function RootLayout({
             </div>
             <div className="opacity-60 space-y-1">
               <p>© 2026 Student Dev. All rights reserved.</p>
-              <p>Built with Next.js & Cascadia Mono</p>
             </div>
           </footer>
         </div>
