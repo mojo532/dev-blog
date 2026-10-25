@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Cat from "./cat";
 import styles from "./home.module.css";
 
@@ -16,6 +17,34 @@ export default function Home() {
           into digital reality. Building spaces that are both functional and
           meaningful.
         </p>
+
+        {/* search- About */}
+        <div className="flex justify-center w-full mt-10">
+          <Link
+            href="/about"
+            className="group flex items-center justify-between w-full max-w-[550px] h-12 px-5 bg-white hover:bg-orange-50 border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all duration-200 cursor-pointer"
+          >
+            <span className="text-sm font-normal text-gray-500 group-hover:text-gray-700 transition-colors">
+              Would you like to know more about me?
+            </span>
+
+            <div className="flex items-center justify-center pl-3 border-l border-gray-200 group-hover:border-gray-300 transition-colors">
+              <svg
+                className="w-5 h-5 text-gray-800 group-hover:scale-105 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+          </Link>
+        </div>
       </section>
 
       {/* blog */}

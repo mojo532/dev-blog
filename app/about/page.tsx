@@ -1,10 +1,31 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import styles from "./about.module.css";
 import Image from "next/image";
 
 export default function AboutPage() {
+  const [sliderPos, setSliderPos] = useState<number>(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const offsetY = e.clientY - rect.top;
+    const percentage = (offsetY / rect.height) * 100;
+    setSliderPos(Math.min(Math.max(percentage, 0), 100));
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const touch = e.touches[0];
+    const offsetY = touch.clientY - rect.top;
+    const percentage = (offsetY / rect.height) * 100;
+    setSliderPos(Math.min(Math.max(percentage, 0), 100));
+  };
+
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start px-4 my-8">
@@ -14,17 +35,48 @@ export default function AboutPage() {
           animate={{ x: 0, opacity: 1 }}
           className={`md:col-span-1 ${styles.profileCard} `}
         >
-          <div className={styles.avatarBox}>
+          <div
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            onTouchMove={handleTouchMove}
+            className={`${styles.avatarBox} relative cursor-row-resize overflow-hidden select-none`}
+          >
+            {/* real photo */}
             <Image
               src="/me_image.jpg"
               alt="Kyungmin Kim Profile"
-              width={300}
-              height={200}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
               priority
             />
+
+            {/* overlay-pixel art */}
+            <div
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{
+                clipPath: `polygon(0 0, 100% 0, 100% ${sliderPos}%, 0 ${sliderPos}%)`,
+              }}
+            >
+              <Image
+                src="/me-pixel3.jpg"
+                alt="Kyungmin Kim Pixel Art"
+                fill
+                className="object-cover [image-rendering:pixelated]"
+                priority
+              />
+            </div>
+
+            {/* handle */}
+            <div
+              className="absolute left-0 w-full flex items-center pointer-events-none"
+              style={{ top: `${sliderPos}%` }}
+            >
+              <div className="w-full h-[2px] bg-black shadow-sm" />
+              <div className="absolute left-1.5 w-3.5 h-3.5 bg-[#c0c0c0] border border-white border-r-black border-b-black shadow" />
+            </div>
           </div>
-          <h2 className="text-2xl font-black mb-2">👾Kyungmin Kim</h2>
+
+          <h2 className="text-2xl font-black mb-2 mt-4">👾Kyungmin Kim</h2>
           <p className="text-sm leading-tight mb-4">
             Computer Science Student & <br />
             Developer
@@ -41,24 +93,50 @@ export default function AboutPage() {
           {/* about me */}
           <section>
             <h3 className="section-title">About me</h3>
-            <p className="text-base font-normal leading-relaxed text-retro-black">
-              Hi, I’m <span className="text-retro-orange">Kyungmin Kim. </span>{" "}
-              A CS student and aspiring full-stack developer bridging
-              storytelling and software.
-              <br />
-              Right now, I'm studying Computer Science(B.Sc. Informatik) at the
-              University of Rostock in Germany. I am a aspiring full-stack
-              developer who loves building things from scratch.
-              <br />
-              Coming from a background in literature and publishing, I naturally
-              care about clear structure, good communication, and thoughtful
-              design. I enjoy working across the stack. From wiring up databases
-              and server logic to crafting clean, interactive web interfaces.
-              <br />
-              My goal is to build purposeful software, learn continuously
-              through hands-on projects, and make technology approachable and
-              fun.
-            </p>
+            <div className="space-y-4">
+              <p className="text-xl md:text-2xl font-semibold leading-snug text-retro-black">
+                Hi, I’m{" "}
+                <span className="text-retro-orange font-bold">Kyungmin.</span>{" "}
+                <span className="text-gray-400">
+                  A CS student and aspiring software engineer bridging human
+                  values and technology.
+                </span>
+              </p>
+
+              {/* 본문 설명 */}
+              <p className="text-base font-normal leading-relaxed text-retro-black">
+                Right now, I'm studying Computer Science (B.Sc. Informatik) at{" "}
+                <a
+                  href="https://www.ief.uni-rostock.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline font-semibold underline-offset-4 hover:text-gray-500 transition-colors"
+                >
+                  Universität Rostock
+                </a>{" "}
+                in Germany. University Rostock in Germany. I love building
+                things from scratch.
+                <br />
+                <br />
+                Coming from a background in literature and publishing, I
+                naturally care about clear structure,{" "}
+                <span className="font-semibold">
+                  {" "}
+                  thoughtful communication, and human-centered design.
+                </span>{" "}
+                As a software engineer, I enjoy building robust and purposeful
+                systems. My work spans from designing data structures and
+                backend logic to crafting responsive, interactive web
+                interfaces.
+                <br />
+                <br />
+                My goal is to create software that genuinely serves people,
+                learn continuously through hands-on engineering projects, and{" "}
+                <span className="font-semibold">
+                  make technology approachable and meaningful.
+                </span>
+              </p>
+            </div>
           </section>
 
           {/* Interests */}
