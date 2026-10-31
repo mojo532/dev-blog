@@ -103,7 +103,7 @@ export default function AboutPage() {
                 </span>
               </p>
 
-              {/* 본문 설명 */}
+              {/* Inhalt */}
               <p className="text-base font-normal leading-relaxed text-retro-black">
                 Right now, I'm studying Computer Science (B.Sc. Informatik) at{" "}
                 <a
